@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +12,34 @@
 
     <script>
         const container = document.querySelector('.container');
-        const gridBox = document.createElement('div');
-        gridBox.style.width = '50px';
-        gridBox.style.height = '50px';
-        gridBox.style.backgroundColor = 'red';
+        
+        const hover = document.querySelector('.grid-row:hover');
 
-        container.appendChild(gridBox);
+        container.style.display = 'flex';
+        container.style.gap = '10px';
+
+
+        for (var x=1; x<17; x++) {
+            var gridCol = document.createElement('div');
+            gridCol.id = 'row'+x;
+            gridCol.className = 'grid-row';
+            container.appendChild(gridCol);
+            gridCol.style.display = 'flex';
+            gridCol.style.flexDirection = 'column';
+            gridCol.style.gap = '10px';
+            gridCol.style.border = '1px solid blue';
+            for (var y=1; y<17; y++) {
+                var gridBox = document.createElement('div');
+                gridBox.id = 'box'+y;
+                gridBox.classList.add('grid-box');
+                gridCol.appendChild(gridBox);
+                gridBox.style.height = '40px';
+                gridBox.style.width = '40px';
+                gridBox.style.border = '1px solid red';
+            }
+        }
+        
+
 
     </script>
 </body>
