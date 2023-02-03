@@ -12,10 +12,13 @@
     <div class="container"></div>
 
     <script>
+        const container = document.querySelector('.container');
         const gridBox = document.createElement('div');
         gridBox.style.width = '50px';
         gridBox.style.height = '50px';
         gridBox.style.backgroundColor = 'red';
+
+        container.appendChild(gridBox);
 
     </script>
 </body>
