@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,33 @@
     <div class="container"></div>
 
     <script>
+
         const container = document.querySelector('.container');
+        container.style.display = 'flex';
+        container.style.border = '1px solid black';
+
+        function createGrid(size) {
+
+            for (x=1; x<size+1; x++) {
+                var newCol = document.createElement('div')
+                newCol.id = 'column'+x;
+                container.appendChild(newCol);
+                for (y=1; y<size+1; y++) {
+                    var newBox = document.createElement('div')
+                    newBox.id = 'row'+x+'box'+y;
+                    newBox.classList.add('grid-box');
+                    newCol.appendChild(newBox);
+                }
+            }
+
+
+
+        }
+
+        createGrid(16);
+
+/*
+const container = document.querySelector('.container');
         
         const hover = document.querySelector('.grid-row:hover');
 
@@ -39,7 +66,7 @@
             }
         }
         
-
+*/
 
     </script>
 </body>
