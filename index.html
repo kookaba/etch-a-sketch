@@ -15,12 +15,16 @@
 
         const container = document.querySelector('.container');
         container.style.display = 'flex';
+        container.style.flexDirection = 'row';
         container.style.border = '1px solid black';
 
         function createGrid(size) {
 
             for (x=1; x<size+1; x++) {
                 var newCol = document.createElement('div')
+                newCol.style.display = 'flex';
+                newCol.style.flexDirection = 'column';
+                newCol.style.flex = '1 1 auto';
                 newCol.id = 'column'+x;
                 container.appendChild(newCol);
                 for (y=1; y<size+1; y++) {
@@ -37,7 +41,7 @@
             for (i in gridBoxes) {
                 gridBoxes[i].addEventListener('mouseenter', toggleHover);
                 gridBoxes[i].addEventListener('mouseleave', toggleHover);
-            }
+        }
         }
 
         //adds and removes the .hover class from grid boxes creating a shadow effect when cursor is hovering
