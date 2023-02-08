@@ -5,6 +5,10 @@ body {
     align-items: center;
 }
 
+button {
+    padding: 5px;
+}
+
 .main-content {
     display: flex;
     border: 1px solid black;
@@ -12,26 +16,11 @@ body {
 
 .left-column {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-}
-
-.button-set {
-    display: flex;
-    flex-direction: column;
     margin: 10px;
-    padding: 15px;
-    gap: 10px;
-}
-
-.button {
-    list-style: none;
-    border: 2px solid blue;
-    padding: 10px;
-    text-align: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 .canvas {

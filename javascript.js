@@ -1,5 +1,7 @@
 const container = document.querySelector('.canvas');
 const gridBoxes = document.getElementsByClassName('grid-box');
+const brushButton = document.getElementById('brush');
+const eraserButton = document.getElementById('eraser');
 var currentColor = 'black';
 var currentColor = 'black'
 container.style.display = 'flex';
@@ -39,6 +41,18 @@ function paint() {
     this.style.background = currentColor;
 }
 
+function toolSelect(tool) {
+    console.log('toolSelect');
+    switch(tool) {
+        case 'brush':
+            console.log('the tool has been set to ' + tool);
+        case 'eraser':
+            console.log('the tool has been set to ' + tool);
+    }
+}
+
+brushButton.addEventListener('click', toolSelect, false);
+
 //calls createGrid with size 16x16. 256 is the max
 createGrid(4);
 
@@ -47,15 +61,5 @@ for (const box of gridBoxes) {
     box.addEventListener('mouseenter', toggleHover, false);
     box.addEventListener('mouseleave', toggleHover, false);
     box.addEventListener('click', this.paint, false);
-}
 
-
-/*
-var gridBoxes = document.getElementsByClassName('grid-box');
-for (i in gridBoxes) {
-    console.log(gridBoxes[i]);
-    gridBoxes[i].addEventListener('mouseenter', toggleHover, false);
-    gridBoxes[i].addEventListener('mouseleave', toggleHover, false);
-    gridBoxes[i].addEventListener('click', toggleHover, false);
 }
-*/
