@@ -1,9 +1,12 @@
-const container = document.querySelector('.container');
+const container = document.querySelector('.canvas');
+const gridBoxes = document.getElementsByClassName('grid-box');
+var currentColor = 'black';
+var currentColor = 'black'
 container.style.display = 'flex';
 container.style.flexDirection = 'row';
 container.style.border = '1px solid black';
-const gridBoxes = document.getElementsByClassName('grid-box');
-var currentColor = 'black';
+
+
 console.log(gridBoxes);
 
 function createGrid(size) {
@@ -33,22 +36,19 @@ function toggleHover() {
 }
 
 function paint() {
-    this.style.background = 'black';
+    this.style.background = currentColor;
 }
 
 //calls createGrid with size 16x16. 256 is the max
 createGrid(4);
 
 //adds event listeners to all grid boxes
-console.log('hello');
 for (const box of gridBoxes) {
-    console.log(box);
     box.addEventListener('mouseenter', toggleHover, false);
     box.addEventListener('mouseleave', toggleHover, false);
     box.addEventListener('click', this.paint, false);
 }
 
-console.log('hello');
 
 /*
 var gridBoxes = document.getElementsByClassName('grid-box');
