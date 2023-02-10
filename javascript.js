@@ -42,15 +42,28 @@ function toggleHover() {
 }
 
 function paint() {
-    this.style.background = currentColor;
+    switch(mode) {
+        case 'brush':
+            console.log('brush brush brush');
+            this.style.background = currentColor;
+            break;
+        case 'eraser':
+            console.log('erase erase erase');
+            this.style.background = setBackgroundColor;
+            break;
+    }
 }
 
 function selectBrush() {
+    mode = 'brush';
     console.log('Brush Selected');
+    return mode;
 }
 
 function selectEraser() {
+    mode = 'eraser';
     console.log('Eraser Selected');
+    return mode;
 }
 
 function clearGrid() {
