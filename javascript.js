@@ -2,6 +2,10 @@ const container = document.querySelector('.canvas');
 const gridBoxes = document.getElementsByClassName('grid-box');
 const brushButton = document.getElementById('brush');
 const eraserButton = document.getElementById('eraser');
+const clearButton = document.getElementById('clear');
+const sizeButton = document.getElementById('set-size');
+const setBackgroundColor = 'white';
+var mode = 'brush';
 var currentColor = 'black';
 var currentColor = 'black'
 container.style.display = 'flex';
@@ -41,20 +45,31 @@ function paint() {
     this.style.background = currentColor;
 }
 
-function toolSelect(tool) {
-    console.log('toolSelect');
-    switch(tool) {
-        case 'brush':
-            console.log('the tool has been set to ' + tool);
-        case 'eraser':
-            console.log('the tool has been set to ' + tool);
-    }
+function selectBrush() {
+    console.log('Brush Selected');
 }
 
-brushButton.addEventListener('click', toolSelect, false);
+function selectEraser() {
+    console.log('Eraser Selected');
+}
 
-//calls createGrid with size 16x16. 256 is the max
-createGrid(4);
+function clearGrid() {
+    for (box of gridBoxes) {
+        box.style.background = setBackgroundColor;
+    }
+    console.log('Grid Cleared');
+}
+
+function selectSize() {
+    console.log('Size Selection');
+}
+
+brushButton.addEventListener('click', selectBrush, false);
+eraserButton.addEventListener('click', selectEraser, false);
+clearButton.addEventListener('click', clearGrid, false);
+sizeButton.addEventListener('click', selectSize, false);
+
+createGrid(16);
 
 //adds event listeners to all grid boxes
 for (const box of gridBoxes) {
