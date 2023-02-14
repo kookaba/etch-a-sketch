@@ -2,6 +2,7 @@ const container = document.querySelector('.canvas');
 const gridColumns = document.getElementsByClassName('grid-column');
 const gridBoxes = document.getElementsByClassName('grid-box');
 const brushButton = document.getElementById('brush');
+const currentColor = document.getElementById('brush-color');
 const eraserButton = document.getElementById('eraser');
 const clearButton = document.getElementById('clear');
 const sizeValue = document.getElementById('size');
@@ -10,8 +11,6 @@ const sizeButton = document.getElementById('set-size');
 const setBackgroundColor = 'white';
 var size = 16;
 var mode = 'brush';
-var currentColor = 'black';
-var currentColor = 'black'
 container.style.display = 'flex';
 container.style.flexDirection = 'row';
 container.style.border = '1px solid black';
@@ -56,7 +55,7 @@ function toggleHover() {
 function paint() {
     switch(mode) {
         case 'brush':
-            this.style.background = currentColor;
+            this.style.background = currentColor.value;
             break;
         case 'eraser':
             this.style.removeProperty('background');
@@ -111,4 +110,4 @@ clearButton.addEventListener('click', clearGrid, false);
 slider.addEventListener('mouseup', showSize, false);
 sizeButton.addEventListener('click', selectSize, false);
 
-createGrid(16);
+createGrid(slider.value * 1);
