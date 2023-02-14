@@ -32,13 +32,19 @@ function createGrid(size) {
             newCol.appendChild(newBox);
         }
     }
-
+    //adds event listeners to all grid boxes
+    for (const box of gridBoxes) {
+        box.addEventListener('mouseenter', toggleHover, false);
+        box.addEventListener('mouseleave', toggleHover, false);
+        box.addEventListener('click', this.paint, false);
+    }
 
 }
 
 //adds and removes the .hover class from grid boxes creating a shadow effect when cursor is hovering
 function toggleHover() {
     this.classList.toggle('hover');
+    console.log('hover');
 }
 
 function paint() {
@@ -49,8 +55,14 @@ function paint() {
             break;
         case 'eraser':
             console.log('erase erase erase');
-            this.style.background = setBackgroundColor;
+            this.style.removeProperty('background');
             break;
+    }
+
+    for (const box of gridBoxes) {
+        box.addEventListener('mouseenter', toggleHover, false);
+        box.addEventListener('mouseleave', toggleHover, false);
+        box.addEventListener('click', this.paint, false);
     }
 }
 
@@ -67,8 +79,8 @@ function selectEraser() {
 }
 
 function clearGrid() {
-    for (box of gridBoxes) {
-        box.style.background = setBackgroundColor;
+    for (const box of gridBoxes) {
+        box.style.removeProperty('background');
     }
     console.log('Grid Cleared');
 }
@@ -84,10 +96,4 @@ sizeButton.addEventListener('click', selectSize, false);
 
 createGrid(16);
 
-//adds event listeners to all grid boxes
-for (const box of gridBoxes) {
-    box.addEventListener('mouseenter', toggleHover, false);
-    box.addEventListener('mouseleave', toggleHover, false);
-    box.addEventListener('click', this.paint, false);
 
-}
