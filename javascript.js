@@ -9,6 +9,7 @@ const sizeValue = document.getElementById('size');
 const slider = document.getElementById('size-slider');
 const sizeButton = document.getElementById('set-size');
 const setBackgroundColor = 'white';
+var clickStatus = false;
 var size = 16;
 var mode = 'brush';
 container.style.display = 'flex';
@@ -42,7 +43,10 @@ function createGrid(size) {
     for (const box of gridBoxes) {
         box.addEventListener('mouseenter', toggleHover, false);
         box.addEventListener('mouseleave', toggleHover, false);
-        box.addEventListener('click', this.paint, false);
+        box.addEventListener('mousedown', mouseDown, false);
+        box.addEventListener('mouseup', mouseUp, false);
+        box.addEventListener('mousedown', this.paint, false);
+        box.addEventListener('mouseenter', this.paint, false);
     }
 
 }
@@ -55,18 +59,25 @@ function toggleHover() {
 function paint() {
     switch(mode) {
         case 'brush':
-            this.style.background = currentColor.value;
+            if (clickStatus === true) {
+                this.style.background = currentColor.value;
+            }
             break;
         case 'eraser':
-            this.style.removeProperty('background');
+            if (clickStatus === true) {
+                this.style.background = setBackgroundColor;
+            }
             break;
     }
 
-    for (const box of gridBoxes) {
-        box.addEventListener('mouseenter', toggleHover, false);
-        box.addEventListener('mouseleave', toggleHover, false);
-        box.addEventListener('click', this.paint, false);
-    }
+}
+
+function mouseDown() {
+    clickStatus = true;
+}
+
+function mouseUp() {
+    clickStatus = false;
 }
 
 function selectBrush() {
