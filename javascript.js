@@ -66,7 +66,7 @@ function paint() {
             break;
         case 'eraser':
             if (clickStatus === true) {
-                this.style.background = setBackgroundColor;
+                this.style.removeProperty('background');
             }
             break;
     }
