@@ -3,6 +3,7 @@ const gridColumns = document.getElementsByClassName('grid-column');
 const gridBoxes = document.getElementsByClassName('grid-box');
 const brushButton = document.getElementById('brush');
 const currentColor = document.getElementById('brush-color');
+const rainbowButton = document.getElementById('rainbow');
 const eraserButton = document.getElementById('eraser');
 const clearButton = document.getElementById('clear');
 const sizeValue = document.getElementById('size');
@@ -85,6 +86,11 @@ function selectBrush() {
     return mode;
 }
 
+function selectRainbow() {
+    mode = 'rainbow';
+    return mode;
+}
+
 function selectEraser() {
     mode = 'eraser';
     return mode;
@@ -116,6 +122,7 @@ function selectSize() {
 }
 
 brushButton.addEventListener('click', selectBrush, false);
+rainbowButton.addEventListener('click', selectRainbow, false);
 eraserButton.addEventListener('click', selectEraser, false);
 clearButton.addEventListener('click', clearGrid, false);
 slider.addEventListener('mouseup', showSize, false);
